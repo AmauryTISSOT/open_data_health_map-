@@ -10,7 +10,7 @@
 -   Feature 2
 -   ...
 
-# Installer avec uv
+## Installer avec uv
 
 ```bash
 uv sync
