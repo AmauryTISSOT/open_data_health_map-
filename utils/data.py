@@ -2,7 +2,7 @@ from pathlib import Path
 import pandas as pd
 import duckdb
 
-DATA_PATH = Path("data/professionnels_sante.parquet")
+DATA_PATH = Path("data/fichier_professionnels_avec_coords.parquet")
 
 
 def load_data() -> pd.DataFrame:
@@ -14,9 +14,7 @@ def load_data() -> pd.DataFrame:
         raise FileNotFoundError("Fichier parquet introuvable")
 
     con = duckdb.connect()
-    df = con.execute(
-        f"SELECT * FROM read_parquet('{DATA_PATH.as_posix()}')"
-    ).df()
+    df = con.execute(f"SELECT * FROM read_parquet('{DATA_PATH.as_posix()}')").df()
     con.close()
 
     # Nettoyage du code postal
@@ -26,6 +24,8 @@ def load_data() -> pd.DataFrame:
     df["code_postal"] = df["code_postal"].astype(str).str.zfill(5)
 
     df["departement"] = df["code_postal"].apply(code_postal_to_departement)
+
+    df = df.dropna(subset=["latitude", "longitude"])
 
     return df
 
