@@ -8,9 +8,11 @@ Ce projet permet de visualiser la répartition des professionnels de santé sur 
 
 ## 🎯 Fonctionnalités
 
--   Feature 1
--   Feature 2
--   ...
+-   Affichage d'une carte intéractive avec la répartition des professionnels de santé en France, par région, par département.
+-   Affichage des 10 premières communes les plus dotées en professionnels de santé
+-   Affichage des régions les plus dotées en professionnels de santé
+-   Affichage des départements les plus dotés en proffessionels de santé
+-   Assistant santé IA permettant de décrire ses symptômes ou besoins de santé pour obtenir une orientation vers un professionnel de santé.
 
 ## Installer avec uv
 
