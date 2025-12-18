@@ -3,8 +3,8 @@
 ## 📋 Description
 
 Ce projet permet de visualiser la répartition des professionnels de santé sur le territoire français à l'aide de StreamLit.
-[](https://i.imgur.com/yqVCHXz.png)
-[](https://i.imgur.com/Lh5W7pB.png)
+![](https://i.imgur.com/yqVCHXz.png)
+![](https://i.imgur.com/Lh5W7pB.png)
 
 ## 🎯 Fonctionnalités
 
