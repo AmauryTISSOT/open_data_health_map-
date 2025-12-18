@@ -23,10 +23,10 @@ def create_map_chart(
     df: pd.DataFrame,
     lat: str = "latitude",
     lon: str = "longitude",
-    color: str = "summary_current_temp",
-    hover_name: str = "display_name",
-    title: str = "Position des villes en Norvège",
-    size: int = 20,
+    size: str = "nb_professionnels",
+    color: str = "nb_professionnels",
+    hover_name: str = "ville",
+    title: str = "Densité des professionnels de santé",
     zoom: int = 5,
 ) -> go.Figure:
     """

@@ -29,9 +29,25 @@ with tab1:
     # Chargement des données
     df = load_data()
 
-    # Métrique globale
-    st.metric("Nombre total de professionnels de santé", f"{len(df):,}")
+    
+    # 🎛️ FILTRE PROFESSION (AU-DESSUS DE LA CARTE)
+    professions_disponibles = sorted(
+        df["profession"]
+        .dropna()
+        .unique()
+    )
 
+    selected_professions = st.multiselect(
+        "Filtrer par profession",
+        professions_disponibles,
+        default=["Médecin"] if "Médecin" in professions_disponibles else professions_disponibles[:1],
+    )
+
+    # Application du filtre
+    if selected_professions:
+        df = df[df["profession"].isin(selected_professions)]
+    # metrics 
+    st.metric("Nombre total de professionnels de santé", f"{len(df):,}")
     # --- Préparation des données pour la carte ---
     # On regroupe par localisation (code_postal + coordonnées)
     df_map = (
