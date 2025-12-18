@@ -122,7 +122,29 @@ with tab2:
     
     # Chargement des données
     df = load_data()
+    # 🎛️ FILTRE PROFESSION (AU-DESSUS DE LA CARTE)
+    professions_disponibles = sorted(
+        df["profession"]
+        .dropna()
+        .unique()
+    )
 
+    selected_professions = st.multiselect(
+        "Filtrer par profession",
+        professions_disponibles,
+        default=["Médecin"] if "Médecin" in professions_disponibles else professions_disponibles[:1],
+        key="tab2_profession_filter"
+    )
+
+    # Application du filtre
+    if selected_professions:
+        df = df[df["profession"].isin(selected_professions)]
+
+    # Métrique globale
+    st.metric(
+        f"Nombre total ({', '.join(selected_professions)})",
+        f"{len(df):,}"
+    )
     # --- Nouvelle carte : Répartition par région ---
     st.subheader("🗺️ Répartition des professionnels de santé par région")
 
